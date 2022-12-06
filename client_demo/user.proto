@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package userPackage;
+
+service user_service {
+    rpc createUser(UserItem) returns (UserItem);
+    rpc readUsers(NoParam) returns (UserItems);
+    rpc readUserDetail(UserIdParam) returns (stream UserItem);
+}
+
+message Text {
+    string text = 1;
+}
+
+message UserItem {
+    int32 id = 1;
+    string username = 2;
+    string fullName = 3;
+    string phone = 4;
+    string email = 5;
+}
+
+message UserItems {
+    repeated UserItem users = 1;
+}
+
+message NoParam {
+
+}
+
+message UserIdParam {
+    int32 id = 1;
+}
